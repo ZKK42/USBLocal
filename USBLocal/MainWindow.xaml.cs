@@ -23,9 +23,10 @@ namespace USBLocal
         private BackgroundWorker backgroundWorker1 = new BackgroundWorker();
         private BackgroundWorker backgroundWorker2 = new BackgroundWorker();
         private BackgroundWorker backgroundWorker3 = new BackgroundWorker();
-        DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        bool apacherenk = false;
-        bool mysqlrenk = false;
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private bool apacherenk = false;
+        private bool mysqlrenk = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -53,17 +54,20 @@ namespace USBLocal
             backgroundWorker3.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker3_RunWorkerCompleted);
             backgroundWorker3.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker3_ProgressChanged);
         }
-        /* 
+
+        /*
          //Web Browser script error hatasını gidermek için aşağıdaki aşagıdaki 3 metod kullanılmıştır.
          webbrowser_Navigated
          SetSilent
          [ComImport, Guid("6D5140C1-7436-11CE-8034-00AA006009FA"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
          IOleServiceProvider
         */
-        void webbrowser_Navigated(object sender, NavigationEventArgs e)
+
+        private void webbrowser_Navigated(object sender, NavigationEventArgs e)
         {
             SetSilent(webbrowser, true);
         }
+
         public static void SetSilent(WebBrowser browser, bool silent)
         {
             if (browser == null)
@@ -81,6 +85,7 @@ namespace USBLocal
                 }
             }
         }
+
         [ComImport, Guid("6D5140C1-7436-11CE-8034-00AA006009FA"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         private interface IOleServiceProvider
         {
@@ -315,7 +320,6 @@ namespace USBLocal
                 MessageBox.Show(ex.ToString());
             }
         }
-
 
         public void php_ini_olustur()
         {
@@ -664,6 +668,7 @@ namespace USBLocal
                 MessageBox.Show(ex.ToString());
             }
         }
+
         public void httpd_autoindex_conf_olustur()
         {
             try
@@ -846,7 +851,6 @@ namespace USBLocal
         {
             try
             {
-
                 string yol = Environment.CurrentDirectory + @"\dosyalar\apache\conf\extra\httpd-xampp.conf";
                 string text = "";
                 text += "<IfModule env_module>" + Environment.NewLine;
@@ -941,7 +945,6 @@ namespace USBLocal
         {
             try
             {
-
                 string multi_master_info = Environment.CurrentDirectory + @"\dosyalar\mysql\data\multi-master.info";
                 File.WriteAllText(multi_master_info, "");
             }
@@ -950,6 +953,7 @@ namespace USBLocal
                 MessageBox.Show(ex.ToString());
             }
         }
+
         private void klasorolustur()
         {
             string tmp = Environment.CurrentDirectory + "\\dosyalar\\tmp";
@@ -965,6 +969,7 @@ namespace USBLocal
                 MessageBox.Show(ex.ToString());
             }
         }
+
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             if (backgroundWorker1.IsBusy != true)
@@ -1061,13 +1066,12 @@ namespace USBLocal
 
         private void backgroundWorker3_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
         }
 
         private void backgroundWorker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
         }
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             WqlEventQuery removeQuery = new WqlEventQuery("SELECT * FROM __InstanceDeletionEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_USBHub'");
@@ -1092,7 +1096,6 @@ namespace USBLocal
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1104,7 +1107,6 @@ namespace USBLocal
                     ellipseapache.Fill = Brushes.Red;
                     ellipseapache.ToolTip = "Apache Server Çalışmıyor(Port:88)";
                 }
-
                 else
                 {
                     ellipseapache.ToolTip = "Apache Server Çalışıyor(Port:88)";
@@ -1122,6 +1124,7 @@ namespace USBLocal
                 }
             }));
         }
+
         private void Window_Closed(object sender, EventArgs e)
         {
             foreach (var process in Process.GetProcessesByName("mysqld"))
@@ -1185,7 +1188,8 @@ namespace USBLocal
             webbrowser.Navigate("http://localhost:88/index.php");
         }
 
-        int sayac = 0;
+        private int sayac = 0;
+
         private void webbrowser_LoadCompleted(object sender, NavigationEventArgs e)
         {
             sayac++;
@@ -1200,7 +1204,6 @@ namespace USBLocal
             }
             animasyon.mesaj.Text = sayac.ToString();
             //webbrowser.Visibility = Visibility.Visible;
-
         }
 
         private void DeviceInsertedEvent(object sender, EventArrivedEventArgs e)

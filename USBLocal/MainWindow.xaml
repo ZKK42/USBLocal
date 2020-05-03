@@ -14,12 +14,12 @@
         </Grid.ColumnDefinitions>
         <DockPanel Height="30" VerticalAlignment="Bottom" Width="739" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
             <StatusBar DockPanel.Dock="Bottom" Height="30" Background="White" FlowDirection="LeftToRight" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left">
-                <Ellipse x:Name="ellipseapache" Height="24"  Width="24" Fill="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" ToolTip="Server"/>
+                <Ellipse x:Name="ellipseapache" Height="24"  Width="24" Fill="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" ToolTip="Server" />
                 <Ellipse x:Name="ellipsemysql" Height="24" Width="24" Fill="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" ToolTip="Server(Veritabanı)" />
             </StatusBar>
         </DockPanel>
         <Image x:Name="kapat_png" Source="img/kapat.png" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" TouchDown="kapat_png_TouchUp" Grid.Column="2" MouseUp="kapat_png_MouseUp" />
-        <WebBrowser x:Name="webbrowser" Margin="0,0,0,35" Grid.ColumnSpan="3" Unloaded="webbrowser_Unloaded" LoadCompleted="webbrowser_LoadCompleted" Visibility="Hidden"/>
+        <WebBrowser x:Name="webbrowser" Margin="0,0,0,35" Grid.ColumnSpan="3" Unloaded="webbrowser_Unloaded" LoadCompleted="webbrowser_LoadCompleted" Visibility="Hidden" />
         <Misc:LoadingAnimation x:Name="animasyon" Width="761" Height="504" Grid.ColumnSpan="2" Margin="0,0,0,30">
             <Misc:LoadingAnimation.Style>
                 <Style TargetType="{x:Type Misc:LoadingAnimation}">
