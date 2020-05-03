@@ -19,8 +19,7 @@
             </StatusBar>
         </DockPanel>
         <Image x:Name="kapat_png" Source="img/kapat.png" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" TouchDown="kapat_png_TouchUp" Grid.Column="2" MouseUp="kapat_png_MouseUp" />
-        <WebBrowser x:Name="webbrowser" Margin="0,0,0,35" Grid.ColumnSpan="3" Unloaded="webbrowser_Unloaded" Visibility="Hidden" LoadCompleted="webbrowser_LoadCompleted">
-        </WebBrowser>
+        <WebBrowser x:Name="webbrowser" Margin="0,0,0,35" Grid.ColumnSpan="3" Unloaded="webbrowser_Unloaded" LoadCompleted="webbrowser_LoadCompleted" Visibility="Hidden"/>
         <Misc:LoadingAnimation x:Name="animasyon" Width="761" Height="504" Grid.ColumnSpan="2" Margin="0,0,0,30">
             <Misc:LoadingAnimation.Style>
                 <Style TargetType="{x:Type Misc:LoadingAnimation}">
